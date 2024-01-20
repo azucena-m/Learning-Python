@@ -137,3 +137,120 @@ def hello(name="my friend"):
     print("Hello " + name) #this is an optional parameter, if you do not pass in an arugment at callback it will return "my friend" instead
 def hello(name, age):
     print("Hello " + name + ", you are " + str(age) + " years old!") #using two parameters, but changing the age into a string
+
+def talk(phrase): #nested functions
+    def say(word):
+        print(word)
+
+    words = phrase.split('')
+    for word in words:
+        say(word)
+
+talk('I am goint to buy the milk')
+
+def count():
+    count = 0
+    def increment():
+        nonlocal count #nonlocal allows us the access the variable that was declared outside this function called count in the inner function
+        count = count + 1
+        print(count)
+
+    increment()
+count()
+
+
+#closures, a special way of doing a function in python
+def counter():
+    count = 0
+    def increment():
+        nonlocal count
+        count = count + 1
+        return count
+    return increment
+
+increment = counter()
+print(increment())
+print(increment())
+print(increment())
+
+
+
+#---Objects, everything in python is an object similar to js
+#they have attributes and methods
+
+
+##loops
+#two kinds, while and for loops
+condition = True
+while condition == True:
+    print('The condition is True')
+    condition = False #added this to stop the loop, otherwise, it will be infinite
+
+count = 0
+while count < 10:
+    print('The condition is True')
+    count = count + 1
+
+items = [1, 2, 3, 4]
+for item in items:
+    print(item) #commonly used for items in a list
+
+#items = [1, 2, 3, 4]
+#for index, item in enumerate(items):
+#    print(item) /the enumerate will return the items and the index number
+
+for item in range(15):
+    print(item) #using range function you can loop until you hit that target in range
+
+#break and continue in loops
+items = [1, 2, 3, 4]
+for item in items:
+    if item == 2:
+        continue #continue stops the current iteration and tells python to start the next one, break stops the loop all together
+    print(item)
+
+#--classes, from classes we can instantiate objects
+class Dog:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+    def bark(self):
+        print('woof') 
+    
+roger = dog()
+print(roger.name)
+print(roger.age)
+roger.bark()
+
+
+#--modules, every python file is a module
+ 
+
+ # Lambda functions, have no name and have only one expression in the body, it has to return a value.Can be assigned to variables
+lambda num : num * 2
+multiply = lambda a, b : a * b
+print(multiply(2, 4))
+
+
+# map, filter, reduce
+#reduce has to be imported: from functools import reduce
+
+# recursion, a function can call itself
+
+# deocrators, inhance or change a function, eg: @logtime
+
+# docstrings, documment the goal of code for you or others
+#they follow convections and processed automatically, eg """ this is what this code is doing""" can be accessed through helper methods and other methods to get information about the code
+
+
+# annotations, allow us to optionally declary the variable type
+
+#exceptions, a way to handle errors in a try block  
+
+# list compressions, this syntax is sometimes preferred over loops
+numbers = [1, 2, 3, 4, 5]
+numbers_power_2 = [n**2 for n in numbers]
+
+
+# Polymorphyism generelizes a functionality so it can work on different types
+
